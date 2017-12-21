@@ -18,12 +18,12 @@ public class WordcountTest {
 
 	public static void main(String [] args) throws Exception {
 
-		if (args == null || args.length == 0) {
+		/*if (args == null || args.length == 0) {
 			args = new String[2];
 			args[0] = "hdfs://192.168.133.11:50070/inputformat/start-all.sh";
-			args[1] = "hdfs://192.168.133.11:50070/outformat/out";
+			args[1] = "hdfs://192.168.133.11:50070/outformat/";
 		}
-
+*/
 		Configuration conf = new Configuration();
 		Job job = Job.getInstance(conf);
 
