@@ -12,7 +12,6 @@ public class FlowMapper extends Mapper<LongWritable,Text,Text,FlowBean> {
 
 	@Override
 	protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
-		super.map(key, value, context);
 
 		//将一行内容转成string
 		String line = value.toString();

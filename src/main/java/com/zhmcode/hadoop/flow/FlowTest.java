@@ -34,9 +34,9 @@ public class FlowTest {
 		job.setOutputValueClass(FlowBean.class);
 
 		// 指定job的输入原生文件所在目录
-		FileInputFormat.setInputPaths(job,new Path(args[0]));
+		FileInputFormat.setInputPaths(job,new Path("hdfs://mini1:9000/flowcount/input"));
 		// 指定job的输出原生文件所在目录
-		FileOutputFormat.setOutputPath(job, new Path(args[1]));
+		FileOutputFormat.setOutputPath(job, new Path("hdfs://mini1:9000/flowcount/output"));
 		//将job中配置的相关参数，以及job所用的java类所在的jar包，提交给yarn去运行
 		boolean res = job.waitForCompletion(true);
 		System.exit(res?0:1);
