@@ -17,6 +17,9 @@ public class WordcountDriver {
 	public static  void  main(String [] args) throws Exception{
 
 		Configuration conf = new Configuration();
+		conf.set("mapreduce.framework.name", "local");
+		conf.set("fs.defaultFS","file:///");
+
 		Job job = Job.getInstance(conf);
 
 		job.setJarByClass(WordcountDriver.class);
@@ -31,15 +34,18 @@ public class WordcountDriver {
 		job.setOutputValueClass(IntWritable.class);
 
 		//指定需要使用combiner，以及用哪个类作为combiner的逻辑
-		job.setCombinerClass(WordcountCombiner.class);
+//		job.setCombinerClass(WordcountCombiner.class);
 
-		Path inputPath = new Path("hdfs://mini1/combiner/input");
-		Path outputPath = new Path("hdfs://mini1/combiner/output");
+//		Path inputPath = new Path("hdfs://mini1:9000/combiner/input");
+//		Path outputPath = new Path("hdfs://mini1:9000/combiner/output");
+		Path inputPath = new Path("D:/combiner/input");
+		Path outputPath = new Path("D:/combiner/output");
 
-		FileSystem fileSystem = FileSystem.get(conf);
+
+	/*	FileSystem fileSystem = FileSystem.get(conf);
 		if(fileSystem.exists(outputPath)){
 			fileSystem.delete(outputPath,true);
-		}
+		}*/
 
 		FileInputFormat.setInputPaths(job,inputPath);
 		FileOutputFormat.setOutputPath(job,outputPath);
